@@ -456,6 +456,7 @@ export enum ValidSources {
   Hubspot = "hubspot",
   Document360 = "document360",
   File = "file",
+  HostFiles = "host_files",
   UserFile = "user_file",
   GoogleSites = "google_sites",
   Loopio = "loopio",

@@ -31,7 +31,10 @@ export const openDocument = (
 ) => {
   if (document.link) {
     window.open(document.link, "_blank");
-  } else if (document.source_type === ValidSources.File) {
+  } else if (
+    document.source_type === ValidSources.File ||
+    document.source_type === ValidSources.HostFiles
+  ) {
     updatePresentingDocument?.(document);
   }
 };

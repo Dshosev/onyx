@@ -31,6 +31,7 @@ logger = setup_logger()
 # permissions are not enforced for them
 CREDENTIAL_PERMISSIONS_TO_IGNORE = {
     DocumentSource.FILE,
+    DocumentSource.HOST_FILES,
     DocumentSource.WEB,
     DocumentSource.NOT_APPLICABLE,
     DocumentSource.GOOGLE_SITES,

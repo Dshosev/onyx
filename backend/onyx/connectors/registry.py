@@ -20,6 +20,10 @@ CONNECTOR_CLASS_MAP = {
         module_path="onyx.connectors.file.connector",
         class_name="LocalFileConnector",
     ),
+    DocumentSource.HOST_FILES: ConnectorMapping(
+        module_path="onyx.connectors.host_files.connector",
+        class_name="HostFilesConnector",
+    ),
     DocumentSource.SLACK: ConnectorMapping(
         module_path="onyx.connectors.slack.connector",
         class_name="SlackConnector",

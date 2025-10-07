@@ -170,6 +170,7 @@ class DocumentSource(str, Enum):
     SLAB = "slab"
     PRODUCTBOARD = "productboard"
     FILE = "file"
+    HOST_FILES = "host_files"
     NOTION = "notion"
     ZULIP = "zulip"
     LINEAR = "linear"
@@ -220,7 +221,10 @@ class FederatedConnectorSource(str, Enum):
         return None
 
 
-DocumentSourceRequiringTenantContext: list[DocumentSource] = [DocumentSource.FILE]
+DocumentSourceRequiringTenantContext: list[DocumentSource] = [
+    DocumentSource.FILE,
+    DocumentSource.HOST_FILES,
+]
 
 
 class NotificationType(str, Enum):
@@ -573,6 +577,7 @@ DocumentSourceDescription: dict[DocumentSource, str] = {
     DocumentSource.SLAB: "slab data",
     DocumentSource.PRODUCTBOARD: "productboard data (boards, etc.)",
     DocumentSource.FILE: "files",
+    DocumentSource.HOST_FILES: "files from host system directories",
     DocumentSource.NOTION: "notion data - a workspace that combines note-taking, \
 project management, and collaboration tools into a single, customizable platform",
     DocumentSource.ZULIP: "zulip data",

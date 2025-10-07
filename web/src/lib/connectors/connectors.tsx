@@ -5,7 +5,7 @@ import { Credential } from "@/lib/connectors/credentials"; // Import Credential 
 
 export function isLoadState(connector_name: string): boolean {
   // TODO: centralize connector metadata like this somewhere instead of hardcoding it here
-  const loadStateConnectors = ["web", "xenforo", "file", "airtable"];
+  const loadStateConnectors = ["web", "xenforo", "file", "host_files", "airtable"];
   if (loadStateConnectors.includes(connector_name)) {
     return true;
   }
@@ -933,6 +933,60 @@ For example, specifying .*-support.* as a "channel" will cause the connector to 
       },
     ],
     advanced_values: [],
+  },
+  host_files: {
+    description: "Configure Host Files connector",
+    values: [
+      {
+        type: "text",
+        query: "Enter the absolute path to the folder on the host system:",
+        label: "Root Directory",
+        name: "root_path",
+        optional: false,
+      },
+    ],
+    advanced_values: [
+      {
+        type: "checkbox",
+        query: "Include hidden files and directories:",
+        label: "Include Hidden Files",
+        name: "allow_hidden",
+        optional: true,
+        default: false,
+        description:
+          "Include files and directories whose names start with '.'.",
+      },
+      {
+        type: "checkbox",
+        query: "Follow symlinks inside the root directory:",
+        label: "Follow Symlinks",
+        name: "follow_symlinks",
+        optional: true,
+        default: false,
+        description:
+          "Traverse symbolic links encountered beneath the root directory.",
+      },
+      {
+        type: "list",
+        query:
+          "Specify optional glob patterns (relative to the root directory) to include when indexing:",
+        label: "Include Patterns",
+        name: "include_patterns",
+        optional: true,
+        description:
+          "Use glob patterns such as '**/*.pdf'. Leave empty to include all supported files.",
+      },
+      {
+        type: "list",
+        query:
+          "Specify optional glob patterns (relative to the root directory) to exclude when indexing:",
+        label: "Exclude Patterns",
+        name: "exclude_patterns",
+        optional: true,
+        description:
+          "Use glob patterns such as '**/*.tmp' to skip certain files or directories.",
+      },
+    ],
   },
   zulip: {
     description: "Configure Zulip connector",
