@@ -84,6 +84,7 @@ services:
         max-file: "6"
     # Optional, only for debugging purposes
     volumes:
+      - hostfiles:/data
       - api_server_logs:/var/log/onyx
 
   background:
@@ -123,6 +124,7 @@ services:
       - "host.docker.internal:host-gateway"
     # Optional, only for debugging purposes
     volumes:
+      - hostfiles:/data
       - background_logs:/var/log/onyx
     logging:
       driver: json-file
@@ -385,3 +387,9 @@ volumes:
   background_logs:
   inference_model_server_logs:
   indexing_model_server_logs:
+  hostfiles:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /data
